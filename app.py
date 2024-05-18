@@ -8,7 +8,11 @@ from nltk.corpus import stopwords
 import nltk
 nltk.download('stopwords')
 import os
+import warnings
+from sklearn.exceptions import InconsistentVersionWarning
 
+#Suppress only inconsistentversionwarnings
+warnings.filterwarnings("ignore", category = InconsistentVersionWarning)
 
 app = Flask(__name__)
 ps = PorterStemmer()
@@ -55,4 +59,4 @@ def predict(text):
     return prediction
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
